@@ -22,7 +22,12 @@ function App() {
             const response = await axios.get(
                 `https://daily-activity-planner-backend.vercel.app/plan?date=${
                     selectedDate.toISOString().split("T")[0]
-                }`
+                }`,
+                {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
             );
             const tasksData = response.data;
             setTasks(tasksData);
@@ -48,7 +53,12 @@ function App() {
                     todo: newTask,
                     startTime,
                     endTime,
-                });
+                },
+                                {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        });
 
                 // Fetch tasks after adding the new task
                 await fetchTasks();
