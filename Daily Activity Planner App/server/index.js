@@ -8,7 +8,11 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = 3001;
 
-app.use(cors());
+app.use(cors(
+    {
+        origin : "https://daily-activity-planner.vercel.app/",
+    },
+));
 app.use(bodyParser.json());
 
 // Connect to MongoDB
