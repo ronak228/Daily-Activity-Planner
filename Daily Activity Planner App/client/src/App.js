@@ -20,7 +20,7 @@ function App() {
     const fetchTasks = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:3000/plan?date=${
+                `https://daily-activity-planner-backend.vercel.app/plan?date=${
                     selectedDate.toISOString().split("T")[0]
                 }`
             );
@@ -43,7 +43,7 @@ function App() {
 
             try {
                 // Add the new task
-                await axios.post("http://localhost:5000/plan", {
+                await axios.post("https://daily-activity-planner-backend.vercel.app/plan", {
                     date: formattedDate,
                     todo: newTask,
                     startTime,
@@ -70,7 +70,7 @@ function App() {
 
     const handleDeleteTask = async (taskId) => {
         try {
-            await axios.delete(`http://localhost:5000/plan/${taskId}`);
+            await axios.delete(`https://daily-activity-planner-backend.vercel.app/plan/${taskId}`);
 
             // Update state by removing the deleted task
             setTasks((prevTasks) =>
@@ -84,7 +84,7 @@ function App() {
     const handleCompleteTask = async (taskId, taskIndex) => {
         try {
             // Send a request to mark the task as completed on the server
-            await axios.patch(`http://localhost:5000/plan/${taskId}`, {
+            await axios.patch(`https://daily-activity-planner-backend.vercel.app/plan/${taskId}`, {
                 completed: true,
             });
 
